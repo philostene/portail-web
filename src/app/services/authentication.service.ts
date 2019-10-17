@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -75,4 +75,11 @@ export class AuthenticationService {
     console.log('register', credentials);
     return this.httpClient.post(`${this.BASE_URL}/register`, credentials, { observe: 'response' });
   }
+
+  /* updateRegister(credentials) {
+    console.log('credentials : ', credentials);
+    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.jwt});
+    return this.httpClient.put(`${this.BASE_URL}/register`, credentials, { headers });
+  } */
+
 }

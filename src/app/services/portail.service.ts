@@ -25,6 +25,11 @@ export class PortailService {
     return this.httpClient.get(url);
   }
 
+  getUserById(id): Observable<User> {
+    console.log('id : ' + id);
+    return this.httpClient.get<User>(`${this.BASE_URL}/userApps/` + id);
+  }
+
   deleteRessource(url){
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
     return this.httpClient.delete(url, {headers: headers});

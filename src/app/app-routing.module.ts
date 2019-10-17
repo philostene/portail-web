@@ -8,6 +8,7 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { ContactComponent } from './contact/contact.component';
 import { ApplisComponent } from './applis/applis.component';
 import { HomeComponent } from './home/home.component';
+import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'adminApplis', component: AdminApplisComponent },
   { path: 'adminContents', component: AdminContentsComponent },
   { path: 'adminUsers', component: AdminUsersComponent },
+  { path: 'admin-edit-user/:id', component: AdminEditUserComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'userApps', component: AdminUsersComponent }
 ];

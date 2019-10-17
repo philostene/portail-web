@@ -17,6 +17,7 @@ export class AdminUsersComponent implements OnInit {
   trashIcon = faTrash;
   plusIcon = faPlus;
   editIcon = faEdit;
+  user: User;
 
   constructor(private portailService: PortailService, private authService: AuthenticationService, private router: Router) { }
 
@@ -48,18 +49,6 @@ export class AdminUsersComponent implements OnInit {
     this.mode = 'new-user';
   }
 
-  /* onSaveUser(data) {
-    console.log('data : ', data);
-    let url = this.portailService.BASE_URL + '/userApps';
-    this.portailService.postRessource(url, data)
-        .subscribe(data => {
-          this.mode = 'list';
-          this.getAllUsers();
-        }, err => {
-          console.error('failure', err);
-        });
-  } */
-
   onSaveUser(formData) {
     this.authService.register(formData)
         .subscribe(resp => {
@@ -70,6 +59,20 @@ export class AdminUsersComponent implements OnInit {
         }, err => {
           console.error('failure', err);
         });
+  }
+
+  /* onUpdateUser(data) {
+    this.authService.updateRegister(data)
+        .subscribe(resp => {
+          this.mode = 'list';
+          this.getAllUsers();
+        }, err => {
+          console.error(err);
+        });
+  } */
+
+  onEditUser(user: User) {
+    this.router.navigateByUrl('/admin-edit-user/' + user.id);
   }
 
 }

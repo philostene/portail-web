@@ -1,0 +1,20 @@
+<div *ngIf="!authService.isAuthenticated()" class="container mt-2">
+  <div class="card">
+    <h5 class="card-header">Créer un compte</h5>
+    <div class="card-body">
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+        <div class="form-group">
+          <input type="username" class="form-control mr-sm-2 mt-2" ngModel name="username" placeholder="username" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control mr-sm-2 mt-2" ngModel name="password" placeholder="mot de passe" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control mr-sm-2 mt-2" ngModel name="confirmedPassword" placeholder="confirmer mot de passe" required>
+        </div>
+        <button type="submit" class="btn btn-outline-success mt-2" [disabled]="registerForm.invalid">Valider</button>
+      </form>
+    </div>
+  </div>
+</div>
+

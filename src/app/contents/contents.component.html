@@ -1,0 +1,10 @@
+<table class="table table-striped" *ngIf="contentList">
+  <tr>
+      <th>ID</th>
+      <th>NOM</th>
+  </tr>
+  <tr *ngFor="let cnt of contentList._embedded.contents">
+      <td>{{ cnt.id }}</td>
+      <td>{{ cnt.contentName }}</td>
+  </tr>
+</table>

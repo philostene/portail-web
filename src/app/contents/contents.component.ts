@@ -13,11 +13,12 @@ export class ContentsComponent implements OnInit {
   // le constructeur se charge une seule fois donc il faut écouter l'url pour que changement OK
   // Navigation Start : on peut récupérer paramètres avant que l'url change
   // Navigation End : on peut récupérer paramètres quand l'url change
-  constructor(private portailService: PortailService, private route: ActivatedRoute, private router: Router) {
+  constructor(private portailService: PortailService, private activatedRoute: ActivatedRoute, private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        console.log('url encodée Base64: ' + this.route.snapshot.params.urlContents);
-        const param: string = this.route.snapshot.params.urlContents;
+        console.log('url encodée Base64: ' + this.activatedRoute.snapshot.params.urlContents);
+        const param: string = this.activatedRoute.snapshot.params.urlContents;
+        // const param: string = this.activatedRoute.snapshot.params.id;
         const urlContents = atob(param); // url décodée en base 64
         console.log('url décodée Base64: ' + urlContents);
         this.getContents(urlContents);
@@ -30,7 +31,7 @@ export class ContentsComponent implements OnInit {
   }
 
   // récupère contenus via l'url décodée en Base 64 et via le Service
-  getContents(urlContents){
+  getContents(urlContents) {
     this.portailService.getRessource(urlContents)
         .subscribe(data => {
           this.contentList = data;

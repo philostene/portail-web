@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminApplisComponent } from './admin/admin-applis/admin-applis.component';
 import { AdminContentsComponent } from './admin/admin-contents/admin-contents.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
+import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.component';
 
 
 
@@ -32,7 +33,8 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
     HomeComponent,
     AdminApplisComponent,
     AdminContentsComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    AdminEditUserComponent
   ],
   imports: [
     BrowserModule,

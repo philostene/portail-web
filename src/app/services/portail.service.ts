@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
+import { Role } from '../models/Role';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,13 @@ export class PortailService {
   }
 
   getUserById(id): Observable<User> {
-    console.log('id : ' + id);
+    console.log('id: ', id);
     return this.httpClient.get<User>(`${this.BASE_URL}/userApps/` + id);
+  }
+
+  getRoleByRoleName(roleName): Observable<Role> {
+    console.log('roleName: ', roleName);
+    return this.httpClient.get<Role>(`${this.BASE_URL}/roleApps/` + roleName);
   }
 
   deleteRessource(url){
@@ -42,7 +48,7 @@ export class PortailService {
 
   putRessource(url, data){
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
-    return this.httpClient.put(url, data, {headers: headers}); // patch => ne met à jour que les données qu'on envoi
+    return this.httpClient.put(url, data, {headers: headers}); // put => ne met à jour que les données qu'on envoi
   }
 
   patchRessource(url, data){

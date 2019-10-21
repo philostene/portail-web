@@ -4,6 +4,8 @@ import { AuthenticationService } from './authentication.service';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { Role } from '../models/Role';
+import { Roles } from '../models/Roles';
+import { Applis } from '../models/Applis';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +24,26 @@ export class PortailService {
   }
 
   // récupérer n'importe quelle ressource par son url avec spring data rest
-  getRessource(url){
+  getRessource(url) {
     return this.httpClient.get(url);
+  }
+
+  // récupérer le user de type USER via URL
+  getUser(url): Observable<User> {
+    return this.httpClient.get<User>(url);
   }
 
   getUserById(id): Observable<User> {
     console.log('id: ', id);
     return this.httpClient.get<User>(`${this.BASE_URL}/userApps/` + id);
+  }
+
+  getRoleByUser(user: User) {
+    return this.httpClient.get<Roles>(`${this.BASE_URL}/userApps/` + user.id + '/roles');
+  }
+
+  getApplisByUser(user: User){
+    return this.httpClient.get<Applis>(`${this.BASE_URL}/userApps/` + user.id + '/applis');
   }
 
   getRoleByRoleName(roleName): Observable<Role> {

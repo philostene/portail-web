@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'adminApplis', component: AdminApplisComponent },
   { path: 'adminContents', component: AdminContentsComponent },
   { path: 'adminUsers', component: AdminUsersComponent },
-  { path: 'admin-edit-user/:id', component: AdminEditUserComponent },
+  // { path: 'admin-edit-user/:id', component: AdminEditUserComponent },
+  { path: 'admin-edit-user/:url', component: AdminEditUserComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'userApps', component: AdminUsersComponent }
 ];

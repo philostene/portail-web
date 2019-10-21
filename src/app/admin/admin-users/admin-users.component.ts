@@ -14,7 +14,7 @@ import { Role } from 'src/app/models/Role';
 export class AdminUsersComponent implements OnInit {
   userList;
   mode = 'list';
-  currentUser;
+  currentUser: User;
   trashIcon = faTrash;
   plusIcon = faPlus;
   editIcon = faEdit;
@@ -72,9 +72,15 @@ export class AdminUsersComponent implements OnInit {
         });
   } */
 
-  // Méthode pour récupérer ID via snapshot.params.id
+  /* // Méthode pour récupérer ID via snapshot.params.id
   onEditUser(user: User) {
     this.router.navigateByUrl('/admin-edit-user/' + user.id);
+  } */
+
+  // Méthode pour récupérer user via URL
+  onEditUser(user: User) {
+    let url = btoa(user._links.userApp.href);
+    this.router.navigateByUrl('/admin-edit-user/' + url );
   }
 
 }

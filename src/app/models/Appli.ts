@@ -1,6 +1,6 @@
-export class Appli {
+export interface Appli {
   id: number;
-  idAppli: string;
+  idAppliKM: string;
   appliName: string;
   contents: [];
 }

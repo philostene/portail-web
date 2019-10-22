@@ -14,8 +14,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'applis', component: ApplisComponent },
+  { path: 'contents/:url', component: ContentsComponent },
   { path: 'contents', component: ContentsComponent },
-  { path: 'contents/:urlContents', component: ContentsComponent },
+
   // { path: 'contents/:p1', component: ContentsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'adminApplis', component: AdminApplisComponent },

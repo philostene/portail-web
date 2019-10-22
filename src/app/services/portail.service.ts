@@ -46,11 +46,6 @@ export class PortailService {
     return this.httpClient.get<Applis>(`${this.BASE_URL}/userApps/` + user.id + '/applis');
   }
 
-  getRoleByRoleName(roleName): Observable<Role> {
-    console.log('roleName: ', roleName);
-    return this.httpClient.get<Role>(`${this.BASE_URL}/roleApps/` + roleName);
-  }
-
   deleteRessource(url){
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
     return this.httpClient.delete(url, {headers: headers});

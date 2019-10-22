@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { ApplisComponent } from 'src/app/applis/applis.component';
 import { Applis } from 'src/app/models/Applis';
 import { Appli } from 'src/app/models/Appli';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-admin-edit-user',
@@ -19,24 +20,16 @@ export class AdminEditUserComponent implements OnInit {
   currentRoles: Array<Role>;
   currentApplis: Appli [];
 
-  constructor(private portailService: PortailService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private portailService: PortailService,
+    private authService: AuthenticationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    /* console.log(this.activatedRoute.snapshot.params.id);
-    let id = this.activatedRoute.snapshot.params.id;
-    this.portailService.getUserById(id)
-        .subscribe(data => {
-          console.log('data', data);
-          this.currentUser = data;
-        }, err => {
-          console.error(err);
-        });
-    */
-
     // récupérer la valeur de l'URL
     let url = atob(this.activatedRoute.snapshot.params.url);
     console.log('url: ' + url);
-
 
     this.portailService.getUser(url)
         .subscribe(data => {
@@ -57,7 +50,7 @@ export class AdminEditUserComponent implements OnInit {
 
             this.currentRoles = data._embedded.roleApps;
             console.log('currentRoles in getRoleByUser(user) : ' );
-          console.log(this.currentRoles);
+            console.log(this.currentRoles);
 
           },
           err => {

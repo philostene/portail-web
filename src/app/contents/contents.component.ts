@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PortailService } from '../services/portail.service';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-contents',
@@ -16,12 +16,12 @@ export class ContentsComponent implements OnInit {
   constructor(private portailService: PortailService, private activatedRoute: ActivatedRoute, private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        console.log('url encodée Base64: ' + this.activatedRoute.snapshot.params.urlContents);
-        const param: string = this.activatedRoute.snapshot.params.urlContents;
+        console.log('url encodée Base64: ' + this.activatedRoute.snapshot.params.url);
+        let param: string = this.activatedRoute.snapshot.params.url;
         // const param: string = this.activatedRoute.snapshot.params.id;
-        const urlContents = atob(param); // url décodée en base 64
-        console.log('url décodée Base64: ' + urlContents);
-        this.getContents(urlContents);
+        let url = atob(param); // url décodée en base 64
+        console.log('url décodée Base64: ' + url);
+        this.getContents(url);
       }
     });
    }
@@ -31,8 +31,8 @@ export class ContentsComponent implements OnInit {
   }
 
   // récupère contenus via l'url décodée en Base 64 et via le Service
-  getContents(urlContents) {
-    this.portailService.getRessource(urlContents)
+  getContents(url) {
+    this.portailService.getRessource(url)
         .subscribe(data => {
           this.contentList = data;
         }, err => {

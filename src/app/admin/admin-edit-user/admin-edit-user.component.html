@@ -12,13 +12,15 @@
                   <input type="text" name="id" class="form-control" placeholder="id" [(ngModel)] = "currentUser.id">
               </div>
               <label for="role">Rôle</label>
-              <div class="form-group" *ngFor="let role of currentRoles; index as i">
-
+              <div class="form-group" *ngFor="let role of currentRoles">
                   <input type="text" name="role" class="form-control" placeholder="role" value='{{role.roleName}}'>
               </div>
-              <div class="form-group" *ngFor="let appli of currentApplis">
+              <div>
                 <label for="appli">Applis</label>
-                <input type="text" name="appli" class="form-control" placeholder="appli" [(ngModel)] = "appli.appliName">
+                <div class="form-group" *ngFor="let appli of currentApplis">
+                  <input type="text" name="appli" class="form-control" placeholder="appli" value='{{appli.appliName}}'>
+                </div>
+
               </div>
               <button type="submit" class="btn btn-success">Update</button>
           </form>

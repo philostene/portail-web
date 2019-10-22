@@ -31,8 +31,8 @@ export class ApplisComponent implements OnInit {
   onGetContentsAppli(appli) {
     this.currentAppli = appli;
     console.log('appli : ' + appli._links.contents.href);
-    const urlContents = appli._links.contents.href;
-    this.router.navigateByUrl('/contents/' + btoa(urlContents)); // btoa() => encoder une url en string base 64
+    let url = appli._links.contents.href;
+    this.router.navigateByUrl('/contents/' + btoa(url)); // btoa() => encoder une url en string base 64
   }
 
 

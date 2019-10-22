@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './services/authentication.service';
-import { PortailService } from './services/portail.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { PortailService } from './services/portail.service';
 })
 export class AppComponent implements OnInit{
 
-  title = 'Portail-Web-frontend';
+  title = 'Guidance-Stats';
 
   constructor(private authService: AuthenticationService) {}
 

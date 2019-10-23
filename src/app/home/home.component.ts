@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PortailService } from '../services/portail.service';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-home',
@@ -9,10 +13,9 @@ export class HomeComponent implements OnInit {
 
 statsImg = 'assets/images/stats-digital.jpg';
 
-  constructor() { }
+  constructor(private portailService: PortailService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
   }
-
 }
-

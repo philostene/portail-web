@@ -47,7 +47,6 @@ export class AdminEditUserComponent implements OnInit {
     getUserRoles(user: User) {
       this.portailService.getRoleByUser(user)
         .subscribe(data => {
-
             this.currentRoles = data._embedded.roleApps;
             console.log('currentRoles in getRoleByUser(user) : ' );
             console.log(this.currentRoles);

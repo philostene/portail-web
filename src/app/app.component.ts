@@ -10,7 +10,7 @@ export class AppComponent implements OnInit{
 
   title = 'Guidance-Stats';
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(public authService: AuthenticationService) {}
 
   ngOnInit(): void {
      this.authService.loadToken();

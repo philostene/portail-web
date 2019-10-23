@@ -59,7 +59,7 @@ export class PortailService {
 
   putRessource(url, data){
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
-    return this.httpClient.put(url, data, {headers: headers}); // put => ne met à jour que les données qu'on envoi
+    return this.httpClient.put(url, data, {headers: headers}); // put => met à jour tous les champs du formulaire
   }
 
   patchRessource(url, data){

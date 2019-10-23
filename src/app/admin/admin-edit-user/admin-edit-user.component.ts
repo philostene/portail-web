@@ -16,7 +16,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./admin-edit-user.component.css']
 })
 export class AdminEditUserComponent implements OnInit {
-  currentUser: User;
+  currentUser;
   currentRoles: Array<Role>;
   currentApplis: Appli [];
 
@@ -60,7 +60,6 @@ export class AdminEditUserComponent implements OnInit {
     getUserApplis(user: User) {
       this.portailService.getApplisByUser(user)
         .subscribe(data => {
-
             this.currentApplis = data._embedded.applis;
             console.log('currentApplis : ' );
             console.log(this.currentApplis);
@@ -71,5 +70,25 @@ export class AdminEditUserComponent implements OnInit {
         });
     }
 
+    /* onUpdateUser(data) {
+      this.authService.updateRegister(data)
+          .subscribe(resp => {
+            // this.mode = 'list';
+            // this.getAllUsers();
+          }, err => {
+            console.error(err);
+          });
+      } */
+
+    onUpdateUser(formData) {
+      let url = this.currentUser._links.self.href;
+      this.portailService.patchRessource(url, formData)
+          .subscribe(d => {
+            this.currentUser = d;
+            this.router.navigateByUrl('/adminUsers');
+          }, err => {
+            console.error(err);
+          });
+    }
 
 }

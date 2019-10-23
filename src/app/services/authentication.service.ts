@@ -76,10 +76,10 @@ export class AuthenticationService {
     return this.httpClient.post(`${this.BASE_URL}/register`, credentials, { observe: 'response' });
   }
 
-  /* updateRegister(credentials) {
-    console.log('credentials : ', credentials);
+  /* updateRegister(id) {
+    console.log('credentials : ', id);
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.jwt});
-    return this.httpClient.put(`${this.BASE_URL}/register`, credentials, { headers });
+    return this.httpClient.put(`${this.BASE_URL}/register/` + id, { headers });
   } */
 
 }

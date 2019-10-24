@@ -77,7 +77,7 @@ export class AdminUsersComponent implements OnInit {
     this.router.navigateByUrl('/admin-edit-user/' + user.id);
   } */
 
-  // Méthode pour récupérer user via URL
+  // Méthode pour récupérer user via URL encodée/décodée
   onEditUser(user: User) {
     let url = btoa(user._links.userApp.href);
     this.router.navigateByUrl('/admin-edit-user/' + url );

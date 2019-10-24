@@ -80,6 +80,7 @@ export class AdminEditUserComponent implements OnInit {
           });
       } */
 
+    // update ressources sauf roles et applis
     onUpdateUser(formData) {
       let url = this.currentUser._links.self.href;
       this.portailService.patchRessource(url, formData)

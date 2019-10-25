@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 // import {MatTableModule} from '@angular/material/table';
 
 
@@ -10,11 +11,13 @@ import { MatListModule } from '@angular/material/list';
   declarations: [],
   imports: [
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   exports: [
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule
     // MatTableModule
   ]
 })

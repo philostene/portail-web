@@ -16,12 +16,12 @@ export class PortailService {
 
   constructor(private httpClient: HttpClient, private authService: AuthenticationService) { }
 
-getBaseUrl(){
-  return `${this.BASE_URL}`;
-}
+  getBaseUrl(){
+    return `${this.BASE_URL}`;
+  }
 
   getAllApplis() {
-    return this.httpClient.get(`${this.BASE_URL}/applis`);
+    return this.httpClient.get<Applis>(`${this.BASE_URL}/applis`);
   }
 
   getAllUsers() {

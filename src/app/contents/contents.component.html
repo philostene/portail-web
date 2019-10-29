@@ -1,20 +1,22 @@
 <div class="row">
-    <div class="col-md-3">
-      <app-applis></app-applis>
-    </div>
-    <div class="col-md-9">
-        <table class="table table-striped col-md-9" *ngIf="contentList">
-            <tr>
-                <th>ID</th>
-                <th>NOM</th>
-            </tr>
-            <tr *ngFor="let cnt of contentList._embedded.contents">
-                <td>{{ cnt.id }}</td>
-                <td>{{ cnt.contentName }}</td>
-            </tr>
-          </table>
-    </div>
+  <div class="col-md-3">
+    <app-applis></app-applis>
   </div>
+
+  <div class="col-md-9">
+      <table class="table table-striped col-md-9" *ngIf="contentList">
+          <tr>
+              <th>ID</th>
+              <th>NOM</th>
+          </tr>
+          <tr *ngFor="let cnt of contentList._embedded.contents">
+              <td>{{ cnt.id }}</td>
+              <td>{{ cnt.contentName }}</td>
+          </tr>
+        </table>
+  </div>
+
+</div>
 
 
 

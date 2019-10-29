@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PortailService } from '../services/portail.service';
-import { ActivatedRoute, Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-contents',

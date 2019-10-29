@@ -16,8 +16,12 @@ export class PortailService {
 
   constructor(private httpClient: HttpClient, private authService: AuthenticationService) { }
 
+  getBaseUrl(){
+    return `${this.BASE_URL}`;
+  }
+
   getAllApplis() {
-    return this.httpClient.get(`${this.BASE_URL}/applis`);
+    return this.httpClient.get<Applis>(`${this.BASE_URL}/applis`);
   }
 
   getAllUsers() {
@@ -39,31 +43,37 @@ export class PortailService {
     return this.httpClient.get<User>(`${this.BASE_URL}/userApps/` + id);
   }
 
+  getRoles() {
+    return this.httpClient.get<Roles>(`${this.BASE_URL}/roleApps`);
+  }
+
   getRoleByUser(user: User) {
     return this.httpClient.get<Roles>(`${this.BASE_URL}/userApps/` + user.id + '/roles');
   }
 
-  getApplisByUser(user: User){
+  getApplisByUser(user: User) {
     return this.httpClient.get<Applis>(`${this.BASE_URL}/userApps/` + user.id + '/applis');
   }
 
-  deleteRessource(url){
-    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+  deleteRessource(url) {
+    const headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
     return this.httpClient.delete(url, {headers: headers});
   }
 
-  postRessource(url, data){
-    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+  postRessource(url, data) {
+    console.log(url);
+    const headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
     return this.httpClient.post(url, data, {headers: headers});
   }
 
-  putRessource(url, data){
-    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
-    return this.httpClient.put(url, data, {headers: headers}); // put => met à jour tous les champs du formulaire
+  putRessource(url, data) {
+    console.log(url);
+    const headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+    return this.httpClient.put(url, data, {headers: headers, observe: 'response'});
   }
 
   patchRessource(url, data){
-    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+    const headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
     return this.httpClient.patch(url, data, {headers: headers}); // patch => ne met à jour que la ou les données qu'on envoi
   }
 

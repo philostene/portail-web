@@ -73,13 +73,7 @@ export class AuthenticationService {
 
   register(credentials) {
     console.log('register', credentials);
-    return this.httpClient.post(`${this.BASE_URL}/register`, credentials, { observe: 'response' });
+    return this.httpClient.post(`${this.BASE_URL}/adminUsers`, credentials, { observe: 'response' });
   }
-
-  /* updateRegister(id) {
-    console.log('credentials : ', id);
-    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.jwt});
-    return this.httpClient.put(`${this.BASE_URL}/register/` + id, { headers });
-  } */
 
 }

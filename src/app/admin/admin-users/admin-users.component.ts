@@ -23,6 +23,7 @@ export class AdminUsersComponent implements OnInit {
   constructor(private portailService: PortailService, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    console.log('AdminUsersComponent.ngOnInit'); // la liste des users se met à jour au chragement de la page adminUsers
     this.getAllUsers();
   }
 
@@ -77,7 +78,7 @@ export class AdminUsersComponent implements OnInit {
     this.router.navigateByUrl('/admin-edit-user/' + user.id);
   } */
 
-  // Méthode pour récupérer user via URL
+  // Méthode pour récupérer user via URL encodée/décodée
   onEditUser(user: User) {
     let url = btoa(user._links.userApp.href);
     this.router.navigateByUrl('/admin-edit-user/' + url );

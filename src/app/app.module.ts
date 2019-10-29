@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ApplisComponent } from './applis/applis.component';
 import { ContentsComponent } from './contents/contents.component';
-import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { AdminApplisComponent } from './admin/admin-applis/admin-applis.component';
@@ -28,7 +27,6 @@ import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.
     ApplisComponent,
     ContentsComponent,
     LoginComponent,
-    RegisterComponent,
     ContactComponent,
     HomeComponent,
     AdminApplisComponent,

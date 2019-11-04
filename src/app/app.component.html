@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-cobalt">
   <a class="navbar-brand" href="#">{{ title }}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,10 @@
         <a class="nav-link" routerLink="/contact">Contact <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/contents">Applis <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/testUserApplis">TestUserApplis <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/applis">Applis <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown" *ngIf="isAuthenticated() && isAdmin()">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,6 +38,7 @@
   </div>
 </nav>
 <router-outlet></router-outlet>
+
 <!-- <div class="row">
   <div class="col-md-3">
     <app-applis></app-applis>

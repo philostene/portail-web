@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PortailService } from '../services/portail.service';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Appli } from '../models/Appli';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-applis',
@@ -14,10 +15,11 @@ export class ApplisComponent implements OnInit {
   // appliList$: Observable<Applis[]>;
   appliList;
   currentAppli;
-  constructor(private portailService: PortailService, private router: Router) { }
+
+  constructor(private portailService: PortailService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-
+    // liste des applis
     // this.appliList$ = this.portailService.getAllApplis();
     this.portailService.getAllApplis()
         .subscribe(data => {
@@ -34,6 +36,7 @@ export class ApplisComponent implements OnInit {
     let url = appli._links.contents.href;
     this.router.navigateByUrl('/contents/' + btoa(url)); // btoa() => encoder une url en string base 64
   }
+
 
 
 }

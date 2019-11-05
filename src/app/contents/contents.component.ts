@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PortailService } from '../services/portail.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ContentAppli } from '../models/ContentAppli';
 
 @Component({
   selector: 'app-contents',
@@ -10,9 +11,6 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 export class ContentsComponent implements OnInit {
   contentList;
 
-  // le constructeur se charge une seule fois donc il faut écouter l'url pour que changement OK
-  // Navigation Start : on peut récupérer paramètres avant que l'url change
-  // Navigation End : on peut récupérer paramètres quand l'url change
   constructor(private portailService: PortailService, private activatedRoute: ActivatedRoute, private router: Router) {
     /* router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -27,6 +25,9 @@ export class ContentsComponent implements OnInit {
    }
 
   ngOnInit() {
+    // le constructeur se charge une seule fois donc il faut écouter l'url pour que changement OK
+    // Navigation Start : on peut récupérer paramètres avant que l'url change
+    // Navigation End : on peut récupérer paramètres quand l'url change
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         console.log('url encodée Base64: ' + this.activatedRoute.snapshot.params.url);

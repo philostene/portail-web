@@ -16,7 +16,7 @@
           <a class="nav-link" routerLink="/contact">Contact <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a *ngIf="authService.isAuthenticated()" class="nav-link" routerLink="/contents/:url">Applis <span class="sr-only">(current)</span></a>
+          <a *ngIf="authService.isAuthenticated() && !isAdmin()" class="nav-link" routerLink="/contents/:url">Applis <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown" *ngIf="isAuthenticated() && isAdmin()">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,7 +24,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" routerLink="/adminApplis">Gestion des applications</a>
-            <a class="dropdown-item" routerLink="/adminContents">Gestion des contenus</a>
+            <!-- <a class="dropdown-item" routerLink="/adminContents">Gestion des contenus</a> -->
             <a class="dropdown-item" routerLink="/adminUsers">Gestion des utilisateurs</a>
           </div>
         </li>

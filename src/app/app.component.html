@@ -16,10 +16,7 @@
           <a class="nav-link" routerLink="/contact">Contact <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/testUserApplis">TestUserApplis <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/applis">Applis <span class="sr-only">(current)</span></a>
+          <a *ngIf="authService.isAuthenticated()" class="nav-link" routerLink="/contents/:url">Applis <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown" *ngIf="isAuthenticated() && isAdmin()">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,10 +30,10 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-          <li class="nav-item mt-2 mr-4 text-blue">{{ authService.username }}</li>
+          <li *ngIf="authService.isAuthenticated()" class="nav-item mt-2 mr-4 text-blue">{{ authService.user.username }}</li>
         <li class="nav-item">
           <a *ngIf="!authService.isAuthenticated()" class="nav-link" routerLink="/login">Sign In</a>
-          <a *ngIf="isAuthenticated()" (click)="logOut()" class="nav-link" routerLink="/">Sign Out</a>
+          <a *ngIf="authService.isAuthenticated()" (click)="logOut()" class="nav-link" routerLink="/">Sign Out</a>
         </li>
       </ul>
     </div>

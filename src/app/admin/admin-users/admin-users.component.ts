@@ -4,7 +4,6 @@ import { PortailService } from 'src/app/services/portail.service';
 import { faTrash, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
-import { Role } from 'src/app/models/Role';
 
 @Component({
   selector: 'app-admin-users',

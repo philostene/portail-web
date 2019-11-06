@@ -18,8 +18,6 @@ import { AdminApplisComponent } from './admin/admin-applis/admin-applis.componen
 import { AdminContentsComponent } from './admin/admin-contents/admin-contents.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.component';
-import { TestUserApplisComponent } from './test-user-applis/test-user-applis.component';
-
 
 
 @NgModule({
@@ -33,8 +31,7 @@ import { TestUserApplisComponent } from './test-user-applis/test-user-applis.com
     AdminApplisComponent,
     AdminContentsComponent,
     AdminUsersComponent,
-    AdminEditUserComponent,
-    TestUserApplisComponent
+    AdminEditUserComponent
   ],
   imports: [
     BrowserModule,

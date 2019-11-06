@@ -9,7 +9,6 @@ import { ContactComponent } from './contact/contact.component';
 import { ApplisComponent } from './applis/applis.component';
 import { HomeComponent } from './home/home.component';
 import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.component';
-import { TestUserApplisComponent } from './test-user-applis/test-user-applis.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,8 +16,6 @@ const routes: Routes = [
   { path: 'applis', component: ApplisComponent },
   { path: 'contents/:url', component: ContentsComponent },
   { path: 'contents', component: ContentsComponent },
-  { path: 'testUserApplis', component: TestUserApplisComponent },
-  // { path: 'contents/:p1', component: ContentsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'adminApplis', component: AdminApplisComponent },
   { path: 'adminContents', component: AdminContentsComponent },

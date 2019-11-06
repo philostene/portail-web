@@ -23,7 +23,7 @@ export class AdminUsersComponent implements OnInit {
   constructor(private portailService: PortailService, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    console.log('AdminUsersComponent.ngOnInit'); // la liste des users se met à jour au chargement de la page adminUsers
+    // console.log('AdminUsersComponent.ngOnInit'); // la liste des users se met à jour au chargement de la page adminUsers
     this.getAllUsers();
   }
 

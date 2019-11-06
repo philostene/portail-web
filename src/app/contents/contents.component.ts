@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PortailService } from '../services/portail.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { ContentAppli } from '../models/ContentAppli';
+
 
 @Component({
   selector: 'app-contents',

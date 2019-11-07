@@ -16,19 +16,19 @@ export class AppComponent implements OnInit{
      this.authService.loadToken();
   }
 
-  isAdmin(){
+  isAdmin() {
     return this.authService.isAdmin();
   }
 
-  isUser(){
+  isUser() {
     return this.authService.isUser();
   }
 
-  isAuthenticated(){
+  isAuthenticated() {
     return this.authService.isAuthenticated();
   }
 
-  logOut(){
-    return this.authService.logOut();
+  logOut() {
+    this.authService.logOut();
   }
 }

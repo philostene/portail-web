@@ -4,7 +4,6 @@ import { PortailService } from 'src/app/services/portail.service';
 import { faTrash, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
-import { Role } from 'src/app/models/Role';
 
 @Component({
   selector: 'app-admin-users',
@@ -23,7 +22,7 @@ export class AdminUsersComponent implements OnInit {
   constructor(private portailService: PortailService, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    console.log('AdminUsersComponent.ngOnInit'); // la liste des users se met à jour au chragement de la page adminUsers
+    // console.log('AdminUsersComponent.ngOnInit'); // la liste des users se met à jour au chargement de la page adminUsers
     this.getAllUsers();
   }
 
@@ -63,20 +62,6 @@ export class AdminUsersComponent implements OnInit {
         });
   }
 
-  /* onUpdateUser(data) {
-    this.authService.updateRegister(data)
-        .subscribe(resp => {
-          this.mode = 'list';
-          this.getAllUsers();
-        }, err => {
-          console.error(err);
-        });
-  } */
-
-  /* // Méthode pour récupérer ID via snapshot.params.id
-  onEditUser(user: User) {
-    this.router.navigateByUrl('/admin-edit-user/' + user.id);
-  } */
 
   // Méthode pour récupérer user via URL encodée/décodée
   onEditUser(user: User) {

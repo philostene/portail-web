@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PortailService } from '../services/portail.service';
-import { ActivatedRoute } from '@angular/router';
+
 
 
 
@@ -13,7 +12,7 @@ export class HomeComponent implements OnInit {
 
 statsImg = 'assets/images/stats-digital.jpg';
 
-  constructor(private portailService: PortailService, private activatedRoute: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
 

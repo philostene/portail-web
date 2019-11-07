@@ -4,16 +4,25 @@
   </div>
 
   <div class="col-md-9">
-      <table class="table table-striped col-md-9" *ngIf="contentList">
-          <tr>
-              <th>ID</th>
-              <th>NOM</th>
-          </tr>
-          <tr *ngFor="let cnt of contentList._embedded.contents">
-              <td>{{ cnt.id }}</td>
-              <td>{{ cnt.contentName }}</td>
-          </tr>
-        </table>
+      <table class="table table-striped" *ngIf="contentList">
+        <tr>
+            <th>Num.</th>
+            <th>Statut</th>
+            <th>Type de Service</th>
+            <th>Contenu pastille</th>
+            <th>Affichages</th>
+            <th>Lectures</th>
+        </tr>
+        <tr *ngFor="let cnt of contentList._embedded.contents">
+            <td>{{ cnt.idContentKM }}</td>
+            <td *ngIf="cnt.published">publiée</td>
+            <td *ngIf="!cnt.published">stoppée</td>
+            <td>{{ cnt.typeService }}</td>
+            <td>{{ cnt.contentName }}</td>
+            <td>{{ cnt.nbAffichages }}</td>
+            <td>{{ cnt.nbLectures }}</td>
+        </tr>
+      </table>
   </div>
 
 </div>

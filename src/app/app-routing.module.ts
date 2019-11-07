@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'applis', component: ApplisComponent },
   { path: 'contents/:url', component: ContentsComponent },
   { path: 'contents', component: ContentsComponent },
-  // { path: 'contents/:p1', component: ContentsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'adminApplis', component: AdminApplisComponent },
   { path: 'adminContents', component: AdminContentsComponent },

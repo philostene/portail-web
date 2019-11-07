@@ -1,3 +1,8 @@
 .pointerClick {
   cursor: pointer;
 }
+
+.active {
+  background: #5b72b8;
+  border-color: #5b72b8;
+}

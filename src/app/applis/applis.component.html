@@ -6,13 +6,9 @@
           <li [ngClass]="currentAppli && currentAppli._links.self == appli._links.self ? 'active':''"
           class="list-group-item pointerClick"
           *ngFor="let appli of appliList._embedded.applis"
-          (click)="onGetContentsAppli(appli)">{{ appli.appliName }}
+          (click)="onGetContentsAppli(appli)">
+            {{ appli.appliName }}
           </li>
       </ul>
   </div>
-
-  <!-- <div class="col-md-9">
-    <h1>COUCOU</h1>
-    <app-contents></app-contents>
-  </div> -->
 </div>

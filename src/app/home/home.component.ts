@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-statsImg = 'assets/images/stats-digital.jpg';
+statsImg = 'assets/images/gris.jpg';
 
   constructor() { }
 

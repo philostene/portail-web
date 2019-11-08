@@ -1,4 +1,4 @@
-export class ContentAppli {
+export interface ContentAppli {
   id: number;
   idContentKM: string;
   contentName: string;

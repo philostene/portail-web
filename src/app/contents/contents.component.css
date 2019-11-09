@@ -3,11 +3,12 @@
 }
 
 tr:nth-child(even) {
-  background: #e1cdc9;
+  background: #f6f5f4;
+  color: #5b72b8;
 }
 tr:nth-child(odd) {
-  background: #5b72b8;
-  color: #e7e9ee;
+  background: #e7e9ee;
+  color: #5b72b8;
 }
 
 .bg-applis {

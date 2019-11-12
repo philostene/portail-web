@@ -2,16 +2,28 @@
   <div class="card">
     <h5 class="card-header bg-dark text-light">Se connecter</h5>
     <div class="card-body">
-      <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+      <form #formlogin="ngForm" (ngSubmit)="onLogin(formlogin.value)">
         <div class="form-group">
           <label for="username">Identifiant SI</label>
-          <input type="text" name="username" class="form-control" placeholder="Entrer votre identifiant de connexion SI" ngModel>
+          <input type="text"
+            name="username"
+            class="form-control"
+            placeholder="Entrer votre identifiant de connexion SI"
+            ngModel
+            required>
         </div>
         <div class="form-group">
           <label for="password">Mot de passe</label>
-          <input type="password" name="password" class="form-control" placeholder="Entrer votre mot de passe" ngModel>
+          <input type="password"
+            name="password"
+            class="form-control"
+            placeholder="Entrer votre mot de passe"
+            ngModel
+            required>
         </div>
-        <button type="submit" class="btn btn-primary">Valider</button>
+        <button type="submit" class="btn btn-primary" [disabled]="formlogin.invalid">Valider</button><br><br>
+        <div class="errorWarn">{{ errorMsg }}</div>
+
       </form>
     </div>
   </div>

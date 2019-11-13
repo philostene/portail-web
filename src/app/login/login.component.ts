@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  // errorFromServer = '';
+  errorMsg = '';
 
+  @ViewChild('formlogin', {static: false}) form: any;
+
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.authService.loadToken();
   }
-  onLogin(data){
+
+  onLogin(data) {
     console.log(data);
     this.authService.login(data)
         .subscribe(resp => {
@@ -25,7 +31,11 @@ export class LoginComponent implements OnInit {
           this.authService.saveToken(jwt);
           this.router.navigateByUrl('/');
         }, err => {
-          console.error(err);
+          console.log('erreur serveur : ');
+          console.log(err.message);
+          // this.errorFromServer = `Error ${err.message} - ${err.status}`;
+          this.errorMsg = 'Identifiants incorrects, veuillez re-saisir identifiant et mot de passe';
+          this.form.reset();
         });
   }
 

@@ -1,4 +1,4 @@
-<div class="container view ">
+<!-- <div class="container view ">
   <div class="row pt-5 w-100">
     <div class="col-md-12">
       <div class="text-center">
@@ -6,7 +6,24 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
+<div class="container view ">
+  <form (ngSubmit)="onSubmit()" #contact>
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" name="name" id="name" [(ngModel)]="emailUser.name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" name="email" id="email" [(ngModel)]="emailUser.email" required>
+    </div>
+    <div class="form-group">
+      <label for="msg">Message</label>
+      <input type="text" class="form-control" name="msg" id="msg" [(ngModel)]="emailUser.textMessage" required>
+    </div>
+    <button type="submit" class="btn btn-success">Contacter</button>
+  </form>
+</div>
 
 

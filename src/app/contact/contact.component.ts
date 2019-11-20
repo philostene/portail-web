@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Email } from '../models/Email';
 import { EmailService } from '../services/email.service';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { error } from 'util';
+
 
 @Component({
   selector: 'app-contact',
@@ -9,27 +11,39 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  // imgConstruction = 'assets/images/page-en-construction.png';
   emailUser: Email = new Email();
+  submitted = false;
+  error: {};
+  //@ViewChild('formContact', {static: false}) form: any; // avec this.form.reset
 
-  constructor(private httpClient: HttpClient, private emailService: EmailService) { }
+  constructor(private emailService: EmailService, private router: Router) { }
 
   ngOnInit() {
   }
 
   envoyerEmail() {
-    this.emailService.envoyerEmail(this.emailUser)
+    this.submitted = true;
+    return this.emailService.envoyerEmail(this.emailUser)
         .subscribe(data => {
+          this.emailUser = data;
           console.log(data);
           //location.reload();
-        }, err => {
-          console.error(err);
-          alert('Une erreur est survenue lors de l\'envoi du courrier électronique');
+          //this.form.reset();
+          
+        }, error => {
+          console.error(error);
+          this.error = error;
+          //alert('Une erreur est survenue lors de l\'envoi du courrier électronique');
         });
   }
 
   onSubmit() {
-    this.envoyerEmail();
+    this.envoyerEmail();  
+   
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
   }
 
 }

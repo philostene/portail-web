@@ -13,7 +13,8 @@ import { error } from 'util';
 export class ContactComponent implements OnInit {
   emailUser: Email = new Email();
   submitted = false;
-  error: {};
+  error;
+  
   //@ViewChild('formContact', {static: false}) form: any; // avec this.form.reset
 
   constructor(private emailService: EmailService, private router: Router) { }

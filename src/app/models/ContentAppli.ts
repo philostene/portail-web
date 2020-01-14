@@ -6,14 +6,22 @@ export interface ContentAppli {
   typeService: string;
   nbAffichages: number;
   nbLectures: number;
+  icone: string;
+  contentURL: string;
+  debut: Date;
+  fin: Date;
+  pubID: string;
   _links: {
     self: {
       href: string
     },
-    content: {
+    content:{
       href: string
     },
     appli: {
+      href: string
+    },
+    statistiquesParJoursList: {
       href: string
     }
   };

@@ -1,23 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 import { MaterialModule } from './material.module';
+// import { BehaviorSubject } from 'rxjs';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ApplisComponent } from './applis/applis.component';
-import { ContentsComponent } from './contents/contents.component';
-import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
-import { AdminApplisComponent } from './admin/admin-applis/admin-applis.component';
-import { AdminContentsComponent } from './admin/admin-contents/admin-contents.component';
-import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
-import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.component';
+import { AppComponent } from './components/app/app.component';
+import { LoginComponent } from './components/login/login.component';
+import { ApplisComponent } from './components/applis/applis.component';
+import { ContentsComponent } from './components/contents/contents.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
+import { AdminApplisComponent } from './components/admin-applis/admin-applis.component';
+import { AdminContentsComponent } from './components/admin-contents/admin-contents.component';
+import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { AdminEditUserComponent } from './components/admin-edit-user/admin-edit-user.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { DatesselectionComponent } from './components/datesselection/datesselection.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 @NgModule({
@@ -31,7 +37,9 @@ import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.
     AdminApplisComponent,
     AdminContentsComponent,
     AdminUsersComponent,
-    AdminEditUserComponent
+    AdminEditUserComponent,
+    StatisticsComponent,
+    DatesselectionComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +48,18 @@ import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    MaterialModule
+    MaterialModule,
+ //   BehaviorSubject,
+
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule
     ],
-  providers: [],
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  BASE_URL: string = 'http://localhost:8080';
+  BASE_URL = 'http://localhost:8080';
   jwt: string;
   roles: Array<string>;
   user: User;
@@ -43,6 +43,7 @@ export class AuthenticationService {
 
   // si chaine ADMIN est >= 0 c'est un ADMIN
   isAdmin() {
+    console.log('role ' + this.roles[0]);
     return this.roles.indexOf('ADMIN') >= 0;
   }
 

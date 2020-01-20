@@ -24,6 +24,7 @@ import { DatesselectionComponent } from './components/datesselection/datesselect
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { ArraySortPipe } from './ArraySortPipe';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     AdminUsersComponent,
     AdminEditUserComponent,
     StatisticsComponent,
-    DatesselectionComponent
+    DatesselectionComponent,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule,

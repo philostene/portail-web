@@ -1,8 +1,8 @@
  <div class="view bg-applis">
   <div class="row">
     <div class="col-md-9 mt-2">
-      <div> {{nomAppli}}</div><div> {{nomContent}}</div>
-      <app-datesselection></app-datesselection>
+      <div class="nomAppli">Nom Application:&nbsp; {{nomAppli}}</div><div class="nomPublication">Nom Publication:&nbsp; {{nomContent}}</div>
+      <app-datesselection></app-datesselection> <button mat-raised-button (click)="startrequest()">Start</button>
   <!--    <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="Date début">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

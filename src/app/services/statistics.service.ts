@@ -21,17 +21,59 @@ export class StatisticsService {
   constructor(private httpClient: HttpClient, private authService: AuthenticationService) { }
 
   private appliSelected = new BehaviorSubject<any>({
-       appliname: 'Knowmore',
-       idAppliKM: 'KnowmoreKM'
+       appliname: 'DefaultAppliName',
+       idAppliKM: 'DefaultAppliId'
 
    });
 
-  setAppliSelectedInfo(appli: any) {
+   private contentSelected = new BehaviorSubject<any>(
+     {
+       contentName: 'DefaultContentName',
+       idContentKM: 'defalutContentId',
+       id: 0,
+       contentURL: 'defaulURL'
+
+     }
+   );
+
+  private fromDateSelected = new BehaviorSubject<any>({
+    fromDate: 'DefaultFromDate'
+  });
+
+  private toDateSelected = new BehaviorSubject<any>({
+    toDate: 'DefaultToDate'
+  });
+
+  setAppliSelected(appli: any) {
     this.appliSelected.next(appli);
   }
 
-  getAppliSelectedInfo() {
+  getAppliSelected() {
     return this.appliSelected.asObservable();
+  }
+
+  setContentSelected(content: any) {
+    this.contentSelected.next(content);
+  }
+
+  getContentSelected() {
+    return this.contentSelected.asObservable();
+  }
+
+  setFromDateSelected(date: any) {
+   this.fromDateSelected.next(date);
+  }
+
+  getFromDateSelected(){
+    return this.fromDateSelected.asObservable();
+  }
+
+  setToDateSelected(date: any) {
+    this.toDateSelected.next(date);
+   }
+
+  getToDateSelected(){
+    return this.toDateSelected.asObservable();
   }
 
   goToLink() {
@@ -43,20 +85,20 @@ export class StatisticsService {
     return this.httpClient.get<Statistic>(`${this.BASE_URL}/statistiquesParJour/` + id);
   }
 
-  setCurrentContent(content) {
-    this.currentContent = content;
-  }
+ // setCurrentContent(content) {
+ //   this.currentContent = content;
+ // }
 
-  getCurrentContent(){
-    return this.currentContent;
-  }
+  // getCurrentContent(){
+  //   return this.currentContent;
+  // }
 
-  setCurrentAppli(appli){
-    this.currentAppli = appli;
-  }
+  // setCurrentAppli(appli){
+  //   this.currentAppli = appli;
+  // }
 
-  getCurrentAppli(){
-    return this.currentAppli;
-  }
+  // getCurrentAppli(){
+  //   return this.currentAppli;
+  // }
 
 }

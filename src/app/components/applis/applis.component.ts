@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { StatisticsService } from 'src/app/services/statistics.service';
 import { Appli } from 'src/app/models/Appli';
+import { ArraySortPipe  } from '../../ArraySortPipe';
 
 @Component({
   selector: 'app-applis',
@@ -20,6 +21,7 @@ export class ApplisComponent implements OnInit {
   this.portailService.getApplisByUser(this.authService.user)
       .subscribe(data => {
         this.appliList = data;
+
       }, err => {
         console.error(err);
       }); }
@@ -39,7 +41,7 @@ export class ApplisComponent implements OnInit {
 
   // récupère les contenus d'une appli avec clic sur l'appli et renvoi vers page "contents" avec url encodée en base 64
   onGetContentsAppli(appli) {
-    this.statisticsService.setAppliSelectedInfo({
+    this.statisticsService.setAppliSelected({
       appliName: appli.appliName,
       idAppliKM: appli.idAppliKM
     });

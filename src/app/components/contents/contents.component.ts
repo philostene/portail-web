@@ -58,7 +58,13 @@ export class ContentsComponent implements OnInit {
   goToLink(content) {
     console.log('cnt url' + content.contentURL);
     console.log('cnt phil: ' + content.idContentKM );
-    this.statisticsService.setCurrentContent(content);
+ //   this.statisticsService.setCurrentContent(content);
+    this.statisticsService.setContentSelected({
+      appliName: content.contentName,
+      idAppliKM: content.idContentKM,
+      id: content.id,
+      contentURL: content.contentURL
+    });
     const urlInterne = '/stats';
     this.router.navigateByUrl(urlInterne).then( (e) => {
       if (e) { console.log('Navigation is successfull : ' + urlInterne); } else  { console.log('Navigation has fail : ' + urlInterne); }

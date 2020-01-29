@@ -1,0 +1,40 @@
+ <div class="view bg-applis">
+  <div class="row">
+    <div class="col-md-9 mt-2">
+      <div class="nomAppli">Nom Application:&nbsp; {{nomAppli}}</div><div class="nomPublication">Nom Publication:&nbsp; {{nomContent}}</div>
+      <app-datesselection></app-datesselection> <button mat-raised-button (click)="startrequest()">Start</button>
+  <!--    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Date début">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Date fin">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field> -->
+      <table class="table" *ngIf="statsList">
+        <thead >
+          <tr class="thead-light text-dark" *ngIf="statsList">
+              <th class="statTh" rowspan="2">Date</th>
+              <th class="statTh" rowspan="2" >Nb Affichage <br />de la pastille </th>
+              <th class="statTh" rowspan="2">Nb Utilisateurs <br />ayant vu la pastille</th>
+              <th class="statTh"rowspan="2">Nb Lecture <br />de la pastille </th>
+              <th class="statTh" rowspan="2">Nb Uilisateurs <br />ayant utilisé la pastille </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cnt of statsList._embedded.statistiquesParJourDtoes">
+              <td class="statTd">{{ cnt.date }}</td>
+              <td class="statTd" >{{ cnt.nbAffichage }}</td>
+              <td class="statTd" >{{ cnt.nbUsersAyantAffichesLaPastille }}</td>
+              <td class="statTd" >{{ cnt.nbDeLectureDeLaPastille }}</td>
+              <td class="statTd" >{{ cnt.nbUsersAyantLusLaPastille }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+

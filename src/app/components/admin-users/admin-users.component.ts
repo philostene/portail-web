@@ -26,7 +26,7 @@ export class AdminUsersComponent implements OnInit {
     this.getAllUsers();
   }
 
-  getAllUsers() {
+  getAllUsers() {        // récupérer la liste de tous les users
     this.portailService.getAllUsers()
         .subscribe(data => {
           this.userList = data;
@@ -65,7 +65,7 @@ export class AdminUsersComponent implements OnInit {
 
   // Méthode pour récupérer user via URL encodée/décodée
   onEditUser(user: User) {
-    let url = btoa(user._links.userApp.href);
+    const url = btoa(user._links.userApp.href);
     this.router.navigateByUrl('/admin-edit-user/' + url );
   }
 

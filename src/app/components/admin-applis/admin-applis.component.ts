@@ -20,7 +20,7 @@ export class AdminApplisComponent implements OnInit {
     this.onGetAllApplis();
   }
 
-  onGetAllApplis(){
+  onGetAllApplis() {
     this.portailService.getAllApplis()
         .subscribe(data => {
           this.appliList = data;
@@ -29,9 +29,9 @@ export class AdminApplisComponent implements OnInit {
         });
   }
 
-  onDeleteAppli(appli){
-    let conf = confirm('Etes-vous sûr de vouloir supprimer ?');
-    if (!conf) return;
+  onDeleteAppli(appli) {
+    const conf = confirm('Etes-vous sûr de vouloir supprimer ?');
+    if (!conf) { return; }
     this.portailService.deleteRessource(appli._links.self.href)
         .subscribe(data => {
           // recharge les applis pour vérifier si l'appli a bien été supprimée
@@ -42,13 +42,13 @@ export class AdminApplisComponent implements OnInit {
         });
   }
 
-  onNewAppli(){
+  onNewAppli() {
     this.mode = 'new-app';
   }
 
-  onSaveAppli(data){
+  onSaveAppli(data) {
     console.log(data);
-    let url = this.portailService.BASE_URL + '/applis';
+    const url = this.portailService.BASE_URL + '/applis';
     this.portailService.postRessource(url, data)
         .subscribe(data => {
           this.mode = 'list';
@@ -58,7 +58,7 @@ export class AdminApplisComponent implements OnInit {
         });
   }
 
-  onUpdateAppli(data){
+  onUpdateAppli(data) {
     this.portailService.putRessource(this.currentAppli._links.self.href, data)
         .subscribe(data => {
           this.mode = 'list';

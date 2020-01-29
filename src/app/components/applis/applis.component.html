@@ -4,7 +4,7 @@
         j'applique la classe active -->
         <li [ngClass]="currentAppli && currentAppli._links.self == appli._links.self ? 'active':''"
         class="list-group-item list-group-item-action pointerClick"
-        *ngFor="let appli of appliList._embedded.applis"
+        *ngFor="let appli of appliList._embedded.applis | sort: 'appliName'"
         (click)="onGetContentsAppli(appli)">
           {{ appli.appliName }}
         </li>

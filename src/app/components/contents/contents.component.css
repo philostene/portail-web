@@ -17,5 +17,8 @@ tr:nth-child(odd) {
   background-size: cover;
 
 }
+.pointerClick {
+  cursor: pointer;
+}
 
 

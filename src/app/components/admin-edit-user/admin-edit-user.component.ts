@@ -16,7 +16,9 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class AdminEditUserComponent implements OnInit {
   currentUser;
-  currentRoles: Array<Role>;
+  currentRoles: Role[] = [];
+  currentRole: Role;
+
   currentApplis: Appli [];
   allRoles: Array<Role>;
   currentRolesIds: number [];
@@ -31,15 +33,15 @@ export class AdminEditUserComponent implements OnInit {
 
   ngOnInit() {
     // récupérer la valeur de l'URL
-    let url = atob(this.activatedRoute.snapshot.params.url);
+    const url = atob(this.activatedRoute.snapshot.params.url);
     console.log('url: ' + url);
 
-    this.portailService.getUser(url)
+    this.portailService.getUser(url)  // infos du user id, nom, actived
         .subscribe(data => {
           this.currentUser = data;
           console.log('currentUser in getUser(url) : ' );
           console.log( this.currentUser);
-          this.getUserRoles(this.currentUser);
+          this.getUserRole(this.currentUser);
           this.getUserApplis(this.currentUser);
         }, err => {
           console.error(err);
@@ -48,20 +50,36 @@ export class AdminEditUserComponent implements OnInit {
     this.getAllApplis();
     }
 
-    getUserRoles(user: User) {
+   /*  getUserRoles(user: User) {
       this.portailService.getRoleByUser(user)
         .subscribe(data => {
           this.currentRoles = data._embedded.roleApps;
           this.currentRolesIds = [this.currentRoles.length];
           this.currentRoles.forEach(role => {
-              console.log('role ', role);
-              this.currentRolesIds.push(role.id);
+             console.log('role ', role);
+             this.currentRolesIds.push(role.id);
             });
           },
           err => {
           console.error(err);
         });
     }
+ */
+
+ getUserRole(user: User) {
+this.portailService.getRoleByUser(user)
+.subscribe(data => {
+// this.currentRole.id = data.id;               // récupération le role du user
+// this.currentRole.roleName = data.roleName;
+this.currentRole = data;
+this.currentRoles.push(this.currentRole);
+this.currentRolesIds = [this.currentRoles.length];
+this.currentRolesIds.push(this.currentRole.id);
+ },
+ err => {
+  console.error(err);
+});
+}
 
     getAllRoles() {
       this.portailService.getRoles()
@@ -78,11 +96,11 @@ export class AdminEditUserComponent implements OnInit {
     // modifie le role selectionné dans la mat-select puis add ou delete role
     updateUserRoles(event: MatOptionSelectionChange, role: Role) {
       // role selectionné dans les options mat-select
-      let selected = event.source.selected;
+      const selected = event.source.selected;
       if (selected === true) {
-        this.addInCurrentRoles(role);
+        this.addInCurrentRoles(role); // un role est selectinné
       } else {
-        this.deleteInCurrentRoles(role);
+        this.deleteInCurrentRoles(role); // un role est déselectionné
       }
       console.log('currentRoles ', this.currentRoles);
     }
@@ -103,12 +121,12 @@ export class AdminEditUserComponent implements OnInit {
           const idCurrentRole = this.currentRoles[i].id ;
           if (idCurrentRole === role.id) {
             // suppression de la liste des roles du user
-            this.currentRoles.splice(i, 1);
+           this.currentRoles.splice(i, 1);
             // suppression de la liste des currentRolesIds du user
-            const index = this.currentRolesIds.indexOf(idCurrentRole);
-            if (index > -1) {
-              this.currentRolesIds.splice(index, 1);
-            }
+           const index = this.currentRolesIds.indexOf(idCurrentRole);
+           if (index > -1) {
+             this.currentRolesIds.splice(index, 1);
+          }
           }
        }
       }
@@ -116,12 +134,13 @@ export class AdminEditUserComponent implements OnInit {
 
     // Vérifie si le role coché est dans la liste des roles du user
     isInCurrentRoles(role: Role) {
-      for (let i = 0; i < this.currentRoles.length; i++) {
-        if ( this.currentRoles[i].id === role.id) {
+      // tslint:disable-next-line: prefer-for-of
+       for (let i = 0; i < this.currentRoles.length; i++) {
+          if ( this.currentRoles[i].id === role.id) {
          return true;
-        }
-     }
-      return false;
+       }
+    }
+       return false;
     }
 
     getUserApplis(user: User) {
@@ -156,7 +175,7 @@ export class AdminEditUserComponent implements OnInit {
     // modifie l'appli selectionnée dans la mat-select puis add ou delete appli
     updateUserApplis(event: MatOptionSelectionChange, appli: Appli) {
       // appli selectionnée dans les options mat-select
-      let selected = event.source.selected;
+      const selected = event.source.selected;
       if (selected === true) {
         this.addInCurrentApplis(appli);
       } else {
@@ -194,6 +213,7 @@ export class AdminEditUserComponent implements OnInit {
 
     // Vérifie si appli cochée est dans la liste des applis du user
     isInCurrentApplis(appli: Appli) {
+      // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < this.currentApplis.length; i++) {
         if ( this.currentApplis[i].id === appli.id) {
          return true;
@@ -204,7 +224,7 @@ export class AdminEditUserComponent implements OnInit {
 
     // update ressources sauf roles et applis
     onUpdateUser(formData) {
-      let url = this.currentUser._links.self.href;
+      const url = this.currentUser._links.self.href;
       this.portailService.patchRessource(url, formData)
           .subscribe(userReturned => {
             this.currentUser = userReturned;
@@ -217,11 +237,11 @@ export class AdminEditUserComponent implements OnInit {
     }
 
     onUpdateUserRoles() {
-      let url =  this.portailService.getBaseUrl() + `/updateUserRoles/` + this.currentUser.id ;
+      const url =  this.portailService.getBaseUrl() + `/updateUserRoles/` + this.currentUser.id ;
 
       this.portailService.putRessource(url, this.currentRoles)
           .subscribe(resp => {
-          let retour: HttpResponse<any> = resp;
+          const retour: HttpResponse<any> = resp;
           console.log(retour);
 
           }, err => {
@@ -230,10 +250,10 @@ export class AdminEditUserComponent implements OnInit {
     }
 
     onUpdateUserApplis() {
-      let url = this.portailService.getBaseUrl() + '/updateUserApplis/' + this.currentUser.id;
+      const url = this.portailService.getBaseUrl() + '/updateUserApplis/' + this.currentUser.id;
       this.portailService.putRessource(url, this.currentApplis)
           .subscribe(resp => {
-            let retour: HttpResponse<any> = resp;
+            const retour: HttpResponse<any> = resp;
             console.log(retour);
           }, err => {
             console.error(err);

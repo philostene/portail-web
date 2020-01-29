@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Email } from '../models/Email';
-import { EmailService } from '../services/email.service';
+import { Email } from '../../models/Email';
+// import { EmailService } from '../../services/email.service';
+import {EmailService} from '../../services/email.service';
 import { Router } from '@angular/router';
 import { error } from 'util';
 
@@ -10,12 +11,13 @@ import { error } from 'util';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
+
 export class ContactComponent implements OnInit {
   emailUser: Email = new Email();
   submitted = false;
   error;
-  
-  //@ViewChild('formContact', {static: false}) form: any; // avec this.form.reset
+
+  // @ViewChild('formContact', {static: false}) form: any; // avec this.form.reset
 
   constructor(private emailService: EmailService, private router: Router) { }
 
@@ -28,19 +30,17 @@ export class ContactComponent implements OnInit {
         .subscribe(data => {
           this.emailUser = data;
           console.log(data);
-          //location.reload();
-          //this.form.reset();
-          
-        }, error => {
-          console.error(error);
-          this.error = error;
-          //alert('Une erreur est survenue lors de l\'envoi du courrier électronique');
+          // location.reload();
+          // this.form.reset();
+        }, err => {
+          console.error(err);
+          this.error = err;
+          // alert('Une erreur est survenue lors de l\'envoi du courrier électronique');
         });
   }
 
   onSubmit() {
-    this.envoyerEmail();  
-   
+    this.envoyerEmail();
   }
 
   goHome() {

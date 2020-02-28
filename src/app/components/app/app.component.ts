@@ -9,8 +9,10 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class AppComponent implements OnInit {
 
   title = 'Guidance-Stats';
+  userName;
 
-  constructor(public authService: AuthenticationService) {}
+  constructor(public authService: AuthenticationService) {
+  }
 
   ngOnInit(): void {
      this.authService.loadToken();

@@ -50,6 +50,7 @@ export class StatisticsComponent implements OnInit {
   this.nomAppli = this.appliTest.appliName;
   this.url = this.currentContent.contentURL;
   this.pubID = this.currentContent.id;
+  this.nomContent = this.currentContent.contentName;
         // console.log('url décodée Base64: ' + this.currentContent);
        // url = 'http://localhost:8080/contents/2/statistiquesParJoursList';
  // url = 'http://localhost:8080/';

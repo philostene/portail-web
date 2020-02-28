@@ -30,7 +30,7 @@ export class ContentsComponent implements OnInit {
     //   }
     // });
     this.ngOnInitVar = true;
-    console.log('ngoninit ok');
+    console.log('ngoninit of contents ok');
     this.getContents();
    }
 
@@ -60,7 +60,7 @@ export class ContentsComponent implements OnInit {
     console.log('cnt phil: ' + content.idContentKM );
  //   this.statisticsService.setCurrentContent(content);
     this.statisticsService.setContentSelected({
-      appliName: content.contentName,
+      contentName: content.contentName,
       idAppliKM: content.idContentKM,
       id: content.id,
       contentURL: content.contentURL

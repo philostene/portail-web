@@ -13,14 +13,15 @@
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field> -->
-      <table class="table" *ngIf="statsList">
+
+      <table class="table" *ngIf="statsList._embedded">
         <thead >
-          <tr class="thead-light text-dark" *ngIf="statsList">
-              <th class="statTh" rowspan="2">Date</th>
-              <th class="statTh" rowspan="2" >Nb Affichage <br />de la pastille </th>
-              <th class="statTh" rowspan="2">Nb Utilisateurs <br />ayant vu la pastille</th>
-              <th class="statTh"rowspan="2">Nb Lecture <br />de la pastille </th>
-              <th class="statTh" rowspan="2">Nb Uilisateurs <br />ayant utilisé la pastille </th>
+          <tr class="thead-light text-dark" >
+              <th rowspan="2" class="CellWithComment">Date <span class="CellComment">Date de la mesure</span></th>
+              <th rowspan="2" class="CellWithComment">Nb Affichage <br />de la pastille <span class="CellComment">Nombre de fois où la pastille a été affichée</span></th>
+              <th rowspan="2" class="CellWithComment">Nb Utilisateurs <br />ayant vu la pastille <span class="CellComment">Nombre d'utilisateurs total ayant vu la pastille</span></th>
+              <th rowspan="2" class="CellWithComment">Nb d'utilisation <br />de la pastille <span class="CellComment">Nombre d'utilisation de la pastille</span></th>
+              <th rowspan="2" class="CellWithComment">Nb Uilisateurs <br />ayant utilisé la pastille <span class="CellComment">Nombre d'utilisateurs uniques ayant utilisés la pastille</span></th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +34,8 @@
           </tr>
         </tbody>
       </table>
-
+       <app-alert *ngIf="statsList._embedded"></app-alert>
+       <app-tooltip></app-tooltip>
     </div>
   </div>
 </div>

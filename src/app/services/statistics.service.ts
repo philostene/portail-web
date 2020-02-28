@@ -32,7 +32,6 @@ export class StatisticsService {
        idContentKM: 'defalutContentId',
        id: 0,
        contentURL: 'defaulURL'
-
      }
    );
 
@@ -64,7 +63,7 @@ export class StatisticsService {
    this.fromDateSelected.next(date);
   }
 
-  getFromDateSelected(){
+  getFromDateSelected() {
     return this.fromDateSelected.asObservable();
   }
 
@@ -72,7 +71,7 @@ export class StatisticsService {
     this.toDateSelected.next(date);
    }
 
-  getToDateSelected(){
+  getToDateSelected() {
     return this.toDateSelected.asObservable();
   }
 

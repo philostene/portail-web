@@ -1,0 +1,10 @@
+.testhover {
+  background-color: gold;
+}
+.my-custom-class .tooltip-inner {
+      background-color: darkgreen;
+      font-size: 125%;
+    }
+    .my-custom-class .arrow::before {
+      border-top-color: darkgreen;
+    }

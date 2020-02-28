@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +26,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { ArraySortPipe } from './ArraySortPipe';
-
+import { AlertComponent } from './components/alert/alert.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ArraySortPipe } from './ArraySortPipe';
     AdminEditUserComponent,
     StatisticsComponent,
     DatesselectionComponent,
-    ArraySortPipe
+    ArraySortPipe,
+    AlertComponent,
+    TooltipComponent
   ],
   imports: [
     BrowserModule,
@@ -51,11 +55,10 @@ import { ArraySortPipe } from './ArraySortPipe';
     FormsModule,
     FontAwesomeModule,
     MaterialModule,
- //   BehaviorSubject,
-
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    NgbModule
     ],
   providers: [
     MatDatepickerModule,

@@ -7,6 +7,7 @@ import { Role } from '../models/Role';
 import { Roles } from '../models/Roles';
 import { Applis } from '../models/Applis';
 import { Statistics } from '../models/Statistics';
+import { ApplisUser } from '../models/ApplisUser';
 
 
 @Injectable({
@@ -64,7 +65,7 @@ export class PortailService {
     }
 
   getApplisByUser(user: User) {
-    return this.httpClient.get<Applis>(`${this.BASE_URL}/userApps/` + user.id + '/applis');
+    return this.httpClient.get<ApplisUser>(`${this.BASE_URL}/userApps/` + user.id + '/applis');
   }
 
   deleteRessource(url) {

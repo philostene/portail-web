@@ -32,7 +32,7 @@
                <tr>
                  <th>Applications présentes</th>
                </tr>
-               <tr *ngFor="let appli of appliList._embedded.applis">
+               <tr *ngFor="let appli of appliList._embedded.applicationDtoes">
                  <td>{{ appli.appliName }}</td>
                  <td>
                     <a class="btn btn-outline-danger" (click)="onDeleteAppli(appli)">

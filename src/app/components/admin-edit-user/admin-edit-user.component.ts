@@ -7,6 +7,7 @@ import { Appli } from 'src/app/models/Appli';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MatOptionSelectionChange } from '@angular/material/core';
 import { HttpResponse } from '@angular/common/http';
+import { AppliUser } from 'src/app/models/AppliUser';
 
 
 @Component({
@@ -163,7 +164,7 @@ this.currentRolesIds.push(this.currentRole.id);
     getAllApplis() {
       this.portailService.getAllApplis()
         .subscribe(data => {
-            this.allApplis = data._embedded.applis;
+            this.allApplis = data._embedded.applicationDtoes;
             console.log('allApplis : ' );
             console.log(this.allApplis);
           },
